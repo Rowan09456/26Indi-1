@@ -66,6 +66,7 @@
 // Link Key DB and LE Device DB using TLV on top of Flash Sector interface
 #define NVM_NUM_DEVICE_DB_ENTRIES 16
 #define NVM_NUM_LINK_KEYS 16
+#define LE_SUPERVISION_TIMEOUT 0x00C8 
 
 // We don't give btstack a malloc, so use a fixed-size ATT DB.
 #define MAX_ATT_DB_SIZE 512
