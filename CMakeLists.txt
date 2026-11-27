@@ -37,19 +37,19 @@ add_executable(Final_project)
 
 target_sources(Final_project PRIVATE
     src/main.c
-    ${CMAKE_CURRENT_LIST_DIR}/drivers/gamepad_HID.c
+    ${CMAKE_CURRENT_LIST_DIR}/drivers/hog_gamepad.c
     #${CMAKE_CURRENT_LIST_DIR}/drivers/hog_keyboard_demo.c
 )
 
-#pico_btstack_make_gatt_header(Final_project PRIVATE
-#    "${CMAKE_CURRENT_LIST_DIR}/drivers/hog_keyboard_demo.gatt"
-#)
+pico_btstack_make_gatt_header(Final_project PRIVATE
+    "${CMAKE_CURRENT_LIST_DIR}/drivers/gamepad_hid.gatt"
+)
 
 pico_set_program_name(Final_project "Final_project")
 pico_set_program_version(Final_project "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(Final_project 1)
+pico_enable_stdio_uart(Final_project 0)
 pico_enable_stdio_usb(Final_project 1)
 
 # Add the standard include files to the build
@@ -66,7 +66,7 @@ target_link_libraries(Final_project
 )
 
 target_compile_definitions(Final_project PRIVATE
-    CYW43_ENABLE_BLUETOOTH=1
+    ENABLE_BLE
 )
 
 # Add any user requested libraries
